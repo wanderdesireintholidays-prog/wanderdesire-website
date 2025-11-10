@@ -1,0 +1,1322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Wander Desire — Plan Your Trip</title>
+<meta name="theme-color" content="#0ea5a4"/>
+<meta name="description" content="Flights, hotels, visas & custom packages. Get a quick quote from Wander Desire."/>
+
+<style>
+:root{--accent:#0ea5a4;--ink:#0f172a;--card:rgba(255,255,255,.92);--ring:#99f6e4}
+*{box-sizing:border-box}
+html,body{height:100%;width:100%;overflow-x:hidden}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;color:var(--ink);background:#0b1220}
+
+/* background visuals */
+.bg-anim{position:fixed;inset:0;z-index:-2}
+.bg-anim:before{content:"";position:absolute;inset:-20%;
+  background:
+    radial-gradient(60% 60% at 10% 20%, #22d3ee33 0%, transparent 60%),
+    radial-gradient(60% 60% at 90% 10%, #a78bfa33 0%, transparent 60%),
+    radial-gradient(70% 60% at 30% 90%, #34d3992e 0%, transparent 60%),
+    radial-gradient(80% 70% at 80% 80%, #f472b633 0%, transparent 60%);
+  filter: blur(40px);animation: floatBg 20s ease-in-out infinite alternate;transform: translateZ(0)
+}
+@keyframes floatBg{0%{transform:translate(-2%,-2%) scale(1)}100%{transform:translate(2%,2%) scale(1.05)}}
+.grid-overlay{position:fixed;inset:0;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:40px 40px;opacity:.35;z-index:-1}
+.top-shade{position:fixed;inset:0 0 auto 0;height:120px;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(8,12,20,.85),rgba(8,12,20,0))}
+
+/* layout */
+.container{max-width:1060px;margin:auto;padding:24px 32px}
+
+/* header - Fixed for mobile */
+.header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:8px 0 18px;position:relative;z-index:2}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex:0 0 auto}
+.brand-badge{display:inline-flex;align-items:center;gap:10px;background:#fff;padding:6px 10px;border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,.12)}
+.brand-img{height:48px;width:auto;display:block}
+@media(max-width:720px){.brand-img{height:34px}}
+.nav{display:flex;gap:10px;flex-wrap:wrap}
+.btn{appearance:none;border:0;border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer;transition:.25s transform,.25s box-shadow;min-width:0;white-space:nowrap}
+.btn.link{background:transparent;color:#e2e8f0;border:1px solid #22d3ee33}
+.btn.link:hover{transform:translateY(-2px)}
+.btn.primary{background:var(--accent);color:#fff;box-shadow:0 10px 24px rgba(14,165,164,.35)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(14,165,164,.45)}
+
+/* card */
+.card{background:var(--card);backdrop-filter: blur(10px);border:1px solid #ffffff33;border-radius:20px;box-shadow:0 20px 60px rgba(2,6,23,.35);overflow:hidden}
+
+/* hero */
+.hero{position:relative;display:grid;grid-template-columns:1fr;gap:0;padding:28px;min-height:460px}
+@media(min-width:900px){.hero{min-height:520px}}
+.hero-copy{position:relative;z-index:3;max-width:640px}
+.video-layer{position:absolute;inset:0;overflow:hidden;border-radius:inherit}
+.bgvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s ease}
+.bgvid.play{opacity:1}
+.v-gradient{position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,6,23,.35),rgba(2,6,23,.65));z-index:1}
+.hero-fallback{position:absolute;inset:0;background:#0b1220 url('assets/hero-fallback.jpg') center/cover no-repeat;z-index:0}
+
+/* badges/trust */
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 18px}
+.badge,.t{font-size:12px;border-radius:8px;padding:6px 10px}
+.badge{color:#064e3b;background:#ecfdf5;border:1px solid #a7f3d0}
+.trust{display:flex;gap:12px;flex-wrap:wrap;margin:8px 0}
+.t{color:#0f766e;background:#d1fae5;border:1px solid #a7f3d0}
+
+/* form */
+form{padding:18px;background:#ffffff;border-top:1px solid #e2e8f0}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media(max-width:720px){.grid{grid-template-columns:1fr}}
+label{display:block;font-size:12px;color:#0f172a;margin:0 0 6px}
+.field{position:relative}
+.field input,.field textarea{width:100%;padding:12px 12px 12px 40px;border:1px solid #e5e7eb;border-radius:12px;font-size:16px;transition:.2s box-shadow,.2s border-color;color:var(--ink);background:#fff}
+.field textarea{min-height:110px;resize:vertical}
+.field svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:18px;height:18px;opacity:.6}
+.field.textarea textarea{min-height:110px}
+.field:focus-within input,.field:focus-within textarea{border-color:var(--accent);box-shadow:0 0 0 4px var(--ring)}
+.consent{display:flex;align-items:center;gap:10px;margin-top:6px}
+
+/* travellers duo */
+.field.duo{padding-left:40px}
+.field.duo svg{left:12px}
+.duo-box{display:flex;align-items:center;gap:12px;border:1px solid #e5e7eb;border-radius:12px;padding:8px 10px;background:#fff}
+.duo-seg{display:flex;align-items:center;gap:8px}
+.duo-seg label{margin:0;font-weight:700;font-size:12px;color:#0f172a}
+.counter{display:inline-flex;align-items:center;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;background:#fff}
+.counter button{all:unset;display:grid;place-items:center;width:28px;height:28px;cursor:pointer;background:#f8fafc;transition:background 0.2s}
+.counter button:hover{background:#e2e8f0}
+.counter input{width:44px;text-align:center;border:0;padding:0;outline:0;font-size:16px;font-weight:600;background:transparent;color:var(--ink)}
+.sep{width:1px;height:20px;background:#e5e7eb;margin:0 6px}
+
+/* destination chips + popup */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.chip{padding:8px 12px;border-radius:999px;border:1px solid #e2e8f0;background:#f8fafc;cursor:pointer;font-size:12px;display:flex;align-items:center;gap:8px}
+.chip .x{font-weight:800;opacity:.6}
+.suggest{position:relative}
+.suggest .list{
+  position:absolute;left:0;right:0;z-index:9999;
+  background:#fff;border:1px solid #e5e7eb;border-radius:10px;
+  box-shadow:0 10px 20px rgba(0,0,0,.12);
+  max-height:320px;overflow:auto;margin-top:6px
+}
+.suggest .item{padding:10px 12px;cursor:pointer;display:flex;justify-content:space-between;gap:10px}
+.suggest .item:hover,.suggest .item.active{background:#f1f5f9}
+.badge-mini{font-size:10px;background:#ecfeff;border:1px solid #a5f3fc;color:#0369a1;padding:2px 6px;border-radius:999px}
+
+/* actions & messages */
+.actions{display:flex;gap:12px;align-items:center;margin-top:8px}
+.submit{background:var(--accent);color:#fff;border:0;padding:12px 16px;border-radius:12px;font-weight:800;cursor:pointer;box-shadow:0 12px 24px rgba(14,165,164,.35);transition:.25s transform,.25s box-shadow}
+.submit:hover{transform:translateY(-2px)}
+.msg{margin-top:10px}.success{background:#ecfdf5;color:#065f46;padding:10px;border-radius:10px}.error{background:#fff1f2;color:#9f1239;padding:10px;border-radius:10px}
+.footer{padding:14px 18px;color:#64748b;background:#fafafa;border-top:1px solid #e2e8f0}
+
+/* reviews */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:18px}
+@media(max-width:900px){.reviews{grid-template-columns:1fr}}
+.review{background:#ffffff;border:1px solid #e5e7eb;border-radius:14px;padding:14px}
+.stars{color:#f59e0b;font-size:14px;margin-bottom:6px}
+.review b{color:#0f172a}
+
+/* faq / about */
+.faq{padding:6px 18px 18px}
+.faq details{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:12px 14px;margin:10px 0}
+.faq summary{cursor:pointer;list-style:none;font-weight:700}
+.faq .ans{margin-top:6px;color:#475569}
+.about{padding:18px}
+.about-grid{display:grid;grid-template-columns:2fr 1fr;gap:14px}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr}}
+.about .title{font-size:18px;font-weight:800;margin:0 0 8px}
+.about .pill{display:inline-block;margin-right:8px;margin-bottom:8px;padding:6px 10px;border-radius:999px;background:#ecfeff;border:1px solid #a5f3fc;color:#0369a1;font-size:12px}
+.socials{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.slink{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid #e2e8f0;background:#fff;text-decoration:none;color:#0f172a;font-weight:600}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(10px);transition:.6s ease}
+.reveal.show{opacity:1;transform:none}
+
+/* WhatsApp FAB */
+.wa-fab{position:fixed;right:16px;bottom:16px;z-index:60;width:56px;height:56px;border-radius:50%;
+  display:grid;place-items:center;background:#25D366;color:#fff;font-size:26px;box-shadow:0 10px 20px rgba(0,0,0,.25);cursor:pointer;transition:.2s transform}
+.wa-fab:hover{transform:translateY(-3px)}
+.wa-popup{position:fixed;right:16px;bottom:86px;z-index:61;background:#fff;border-radius:16px;box-shadow:0 10px 25px rgba(0,0,0,.25);padding:12px 14px;display:none;flex-direction:column;gap:10px;min-width:230px}
+.wa-popup.show{display:flex;animation:fadeIn .2s ease}
+.wa-popup .wa-header{font-weight:800;color:#0f172a;font-size:15px;margin-bottom:4px}
+.wa-popup a{text-decoration:none;font-weight:700;color:#064e3b;background:#ecfdf5;border:1px solid #a7f3d0;padding:8px 10px;border-radius:10px;font-size:14px}
+.wa-popup a:hover{background:#d1fae5}
+#waClose{all:unset;position:absolute;top:8px;right:10px;cursor:pointer;font-weight:800;font-size:18px;color:#475569}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* Canvas */
+#confetti{position:fixed;inset:0;pointer-events:none}
+.small{font-size:12px;color:#64748b}
+
+/* ---------- Mobile polish ---------- */
+.container{padding:18px 14px}
+.header{margin:6px 0 12px;gap:10px}
+.nav{gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.nav .btn{padding:8px 10px;border-radius:10px;font-size:14px}
+.hero{min-height:clamp(300px,58vh,520px);padding:20px}
+.v-gradient{background:linear-gradient(180deg,rgba(8,12,20,.65),rgba(8,12,20,.25))}
+
+/* ====== KEY FIX: keep logo + 3 buttons on ONE LINE on small screens ====== */
+@media(max-width:600px){
+  .container{padding:14px 10px}
+  .header{
+    display:flex;
+    flex-direction:row;        /* force single row */
+    align-items:center;
+    gap:8px;
+    flex-wrap:nowrap;          /* no wrap */
+  }
+  .brand{flex:0 0 auto}
+  .brand-badge{padding:4px 8px;border-radius:10px}
+  .brand-img{height:28px}
+
+  .nav{
+    flex:1 1 auto;
+    display:flex;
+    justify-content:flex-end;
+    gap:6px;
+    flex-wrap:nowrap;          /* no wrap for buttons */
+    overflow:hidden;           /* prevent layout jump */
+  }
+  .nav .btn,
+  .btn.primary{
+    padding:6px 8px;
+    font-size:12px;
+    line-height:1.1;
+    border-radius:9px;
+    min-width:0;               /* allow shrink */
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+  }
+}
+
+/* ultra-small phones */
+@media(max-width:380px){
+  .brand-img{height:26px}
+  .nav{gap:5px}
+  .nav .btn,.btn.primary{
+    padding:5px 7px;
+    font-size:11.5px;
+    border-radius:8px;
+  }
+}
+
+/* hero tweaks on tiny screens */
+@media(max-width:600px){
+  .hero{min-height:320px;padding:18px}
+  .hero-copy h1{font-size:26px!important;line-height:1.15;margin-bottom:8px}
+  .lead{font-size:14px}
+  .badges .badge,.trust .t{font-size:11px;padding:5px 8px}
+}
+.card{border-radius:16px}
+#lead form{padding:14px}
+.grid{grid-template-columns:1fr;gap:12px}
+.duo-box{gap:10px;padding:8px}
+.chips{gap:6px}
+.chip{padding:7px 10px;font-size:12px}
+.submit{padding:12px 14px;font-size:15px;border-radius:12px}
+.reviews{grid-template-columns:1fr;gap:10px;padding:12px}
+.review{padding:12px}
+.stars{font-size:13px}
+.faq{padding:6px 12px 14px}
+.faq details{padding:10px 12px}
+.about{padding:12px}
+.about-grid{grid-template-columns:1fr;gap:10px}
+.about .title{font-size:16px}
+
+/* ====== MOBILE-SPECIFIC FORM STYLES ====== */
+/* Hide desktop form on mobile */
+@media (max-width: 720px) {
+  #lead.desktop-form { display: none; }
+}
+
+/* Show mobile form only on mobile */
+@media (max-width: 720px) {
+  #lead.mobile-form { display: block; }
+}
+
+/* Hide mobile form on desktop */
+@media (min-width: 721px) {
+  #lead.mobile-form { display: none; }
+}
+
+/* Mobile form specific adjustments */
+.mobile-form .field input,
+.mobile-form .field textarea {
+  font-size: 16px; /* Prevents zoom on iOS */
+  padding: 14px 14px 14px 44px;
+}
+
+.mobile-form .field svg {
+  left: 14px;
+}
+
+.mobile-form .counter button {
+  width: 32px;
+  height: 32px;
+}
+
+.mobile-form .counter input {
+  width: 48px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align:center;
+  background:transparent;
+  color:var(--ink);
+}
+
+.mobile-form .chips {
+  gap: 6px;
+}
+
+.mobile-form .chip {
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+.mobile-form .submit {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+}
+
+.mobile-form .suggest .list {
+  max-height: 280px;
+}
+
+.mobile-form .suggest .item {
+  padding: 12px 14px;
+}
+
+/* Mobile form step indicator */
+.form-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.form-steps:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #e2e8f0;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.step {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  position: relative;
+  z-index: 2;
+}
+
+.step.active {
+  background: var(--accent);
+  color: white;
+}
+
+.step.completed {
+  background: #10b981;
+  color: white;
+}
+
+.step-label {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 11px;
+  color: #64748b;
+}
+
+.step.active .step-label {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Mobile form step containers */
+.form-step {
+  display: none;
+}
+
+.form-step.active {
+  display: block;
+}
+
+/* Mobile form navigation buttons */
+.form-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.form-nav button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.form-nav .btn-prev {
+  background: #f8fafc;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.form-nav .btn-next,
+.form-nav .btn-submit {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 4px 12px rgba(14,165,164,.3);
+}
+
+.form-nav button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ====== FIX FOR MOBILE ADULTS & KIDS COUNTER ====== */
+/* Ensure duo-box is properly visible on mobile */
+.mobile-form .field.duo {
+  padding-left: 40px;
+  display: block; /* Ensure it's displayed */
+  visibility: visible; /* Ensure it's visible */
+}
+
+.mobile-form .duo-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 8px;
+  background: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.mobile-form .duo-seg {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.mobile-form .duo-seg label {
+  margin: 0;
+  font-weight: 700;
+  font-size: 12px;
+  color: #0f172a;
+  min-width: 50px;
+}
+
+.mobile-form .counter {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.mobile-form .counter button {
+  all: unset;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  background: #f8fafc;
+  transition: background 0.2s;
+}
+
+.mobile-form .counter button:hover {
+  background: #e2e8f0;
+}
+
+.mobile-form .counter input {
+  width: 48px;
+  text-align: center;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  font-size: 16px;
+  font-weight: 600;
+  background: transparent;
+  color: var(--ink);
+}
+
+.mobile-form .sep {
+  width: 1px;
+  height: 20px;
+  background: #e5e7eb;
+  margin: 0 6px;
+}
+
+/* Hide packages section */
+#packages {
+  display: none;
+}
+
+/* Remove packages from navigation */
+.nav a[href="#packages"] {
+  display: none;
+}
+
+/* Submitted message styling */
+.submitted {
+  background: #ecfdf5;
+  color: #065f46;
+  padding: 16px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 600;
+  margin: 10px 0;
+  border: 1px solid #a7f3d0;
+}
+</style>
+</head>
+<body>
+<canvas id="confetti"></canvas>
+<div class="bg-anim"></div>
+<div class="grid-overlay"></div>
+<div class="top-shade"></div>
+
+<!-- WhatsApp FAB with two numbers -->
+<div class="wa-fab" id="waFab" title="Chat on WhatsApp">💬</div>
+<div class="wa-popup" id="waPopup" aria-hidden="true">
+  <div class="wa-header">Chat on WhatsApp</div>
+  <a href="https://wa.me/919926058885?text=Hi%20Wander%20Desire%2C%20I%20want%20to%20plan%20a%20trip" target="_blank" rel="noopener">📞 +91 99260 58885</a>
+  <a href="https://wa.me/919340081750?text=Hi%20Wander%20Desire%2C%20I%20want%20to%20plan%20a%20trip" target="_blank" rel="noopener">📞 +91 93400 81750</a>
+  <button id="waClose" aria-label="Close">×</button>
+</div>
+
+<div class="container">
+  <!-- header -->
+  <header class="header reveal">
+    <a href="/" class="brand" aria-label="Wander Desire">
+      <span class="brand-badge">
+        <img src="assets/wander-desire-logo.png" alt="Wander Desire — International Holidays" class="brand-img" loading="eager" decoding="async">
+      </span>
+    </a>
+    <nav class="nav">
+      <a class="btn link" href="#lead">Enquire</a>
+      <button class="btn primary" type="button" id="waTopBtn">WhatsApp</button>
+    </nav>
+  </header>
+
+  <!-- hero -->
+  <section class="card hero reveal">
+    <div class="video-layer" aria-hidden="true">
+      <div class="hero-fallback" aria-hidden="true"></div>
+      <video id="vA" class="bgvid" muted playsinline preload="auto"></video>
+      <video id="vB" class="bgvid" muted playsinline preload="auto"></video>
+      <div class="v-gradient"></div>
+    </div>
+    <div class="hero-copy">
+      <h1 style="margin:6px 0 8px;font-size:34px;line-height:1.1;color:#e2e8f0">Your next escape, beautifully planned ✨</h1>
+      <p class="lead" style="color:#cbd5e1;margin:0 0 18px">Flights, hotels, visas, curated packages — we handle it all while you enjoy the journey.</p>
+      <div class="badges">
+        <span class="badge">Since 2011</span>
+        <span class="badge">Most Trusted Website</span>
+        <span class="badge">24×7 Support</span>
+      </div>
+      <div class="trust"><span class="t">Best Price Match</span><span class="t">Tailor-made Itineraries</span><span class="t">Secure Payments</span></div>
+    </div>
+  </section>
+
+  <!-- DESKTOP enquiry form (hidden on mobile) -->
+  <section id="lead" class="card desktop-form reveal" style="margin-top:18px">
+    <form id="leadForm" autocomplete="on">
+      <input type="hidden" id="utm_source" name="utm_source">
+      <input type="hidden" id="utm_medium" name="utm_medium">
+      <input type="hidden" id="utm_campaign" name="utm_campaign">
+      <input type="hidden" id="utm_term" name="utm_term">
+      <input type="hidden" id="utm_content" name="utm_content">
+      <input type="text" id="company" name="company" style="position:absolute;left:-5000px;opacity:0" tabindex="-1" autocomplete="off">
+
+      <div class="grid">
+        <div class="field">
+          <label for="name">Full name</label>
+          <svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-5 0-9 2.5-9 5v1h18v-1c0-2.5-4-5-9-5Z" fill="currentColor"/></svg>
+          <input id="name" name="name" type="text" placeholder="Your name" required />
+        </div>
+        <div class="field">
+          <label for="phone">Phone / WhatsApp</label>
+          <svg viewBox="0 0 24 24"><path d="M20 3H4a1 1 0 0 0-1 1v16l4-4h13a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1Z" fill="currentColor"/></svg>
+          <input id="phone" name="phone" type="tel" placeholder="98765 43210" pattern="[0-9+\- ]{6,}" inputmode="tel" required maxlength="12" />
+        </div>
+        <div class="field">
+          <label for="email">Email (optional)</label>
+          <svg viewBox="0 0 24 24"><path d="M20 5H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm0 4-8 5-8-5" fill="currentColor"/></svg>
+          <input id="email" name="email" type="email" placeholder="name@example.com" />
+        </div>
+
+        <!-- destinations -->
+        <div class="field" style="grid-column: span 2">
+          <label for="destSearch">Preferred destination(s)</label>
+          <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5Z" fill="currentColor"/></svg>
+          <input id="destSearch" type="text" placeholder="Search any city, state or country..." autocomplete="off" />
+          <div id="destChips" class="chips" style="margin-top:8px"></div>
+          <input type="hidden" id="destinations" name="destinations" value="[]"/>
+          <div id="destSuggest" class="suggest"></div>
+        </div>
+
+        <div class="field">
+          <label for="travelDate">Travel date</label>
+          <svg viewBox="0 0 24 24"><path d="M7 2v2H5a2 2 0 0 0-2 2v2h18V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7Zm14 8H3v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V10Z" fill="currentColor"/></svg>
+          <input id="travelDate" name="travelDate" type="date" />
+        </div>
+
+        <!-- travellers duo -->
+        <div class="field duo">
+          <label>Travellers</label>
+          <svg viewBox="0 0 24 24"><path d="M16 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm-8 0a3 3 0 1 0-3-3 3 3 0 0 0 3 3Zm8 2c-2.67 0-8 1.34-8 4v1h16v-1c0-2.66-5.33-4-8-4Zm-8 1c-2.21 0-6 1.11-6 3v1h6v-1a4.37 4.37 0 0 1 2.09-3Z" fill="currentColor"/></svg>
+          <div class="duo-box">
+            <div class="duo-seg">
+              <label for="adults">Adults</label>
+              <div class="counter">
+                <button type="button" data-dec="adults" aria-label="decrease adults">−</button>
+                <input id="adults" name="adults" type="number" min="1" max="20" value="2" inputmode="numeric">
+                <button type="button" data-inc="adults" aria-label="increase adults">+</button>
+              </div>
+            </div>
+            <span class="sep"></span>
+            <div class="duo-seg">
+              <label for="kids">Kids</label>
+              <div class="counter">
+                <button type="button" data-dec="kids" aria-label="decrease kids">−</button>
+                <input id="kids" name="kids" type="number" min="0" max="20" value="0" inputmode="numeric">
+                <button type="button" data-inc="kids" aria-label="increase kids">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="budget">Budget per person (approx)</label>
+          <svg viewBox="0 0 24 24"><path d="M12 1a11 11 0 1 0 11 11A11.013 11.013 0 0 0 12 1Z" fill="currentColor"/></svg>
+          <input id="budget" name="budget" type="text" placeholder="₹20,000 – ₹30,000" />
+        </div>
+        <div class="field">
+          <label for="coupon">Coupon / Referral code (optional)</label>
+          <svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10H5a2 2 0 0 1-2-2V7Z" fill="currentColor"/></svg>
+          <input id="coupon" name="coupon" type="text" placeholder="e.g. FRIEND500" />
+        </div>
+      </div>
+
+      <div class="field textarea" style="margin-top:10px">
+        <label for="message">Short message / requirements</label>
+        <svg viewBox="0 0 24 24"><path d="M20 2H4a2 2 0 0 0-2 2v14l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Z" fill="currentColor"/></svg>
+        <textarea id="message" name="message" placeholder="Hotel star, meal plan, special requests..."></textarea>
+      </div>
+
+      <div class="consent">
+        <input id="consent" name="consent" type="checkbox" required />
+        <label for="consent">I agree to be contacted by Wander Desire about my enquiry.</label>
+      </div>
+
+      <div class="actions">
+        <button class="submit" id="submitBtn" type="submit">Get quote ✈</button>
+      </div>
+      <div id="responseMsg" class="msg" aria-live="polite"></div>
+    </form>
+    <div class="footer">
+      Your information is secure with us. We respect your privacy and never share your details with third parties.
+    </div>
+  </section>
+
+  <!-- MOBILE enquiry form (hidden on desktop) -->
+  <section id="lead" class="card mobile-form reveal" style="margin-top:18px">
+    <form id="mobileLeadForm" autocomplete="on">
+      <input type="hidden" id="mobile_utm_source" name="utm_source">
+      <input type="hidden" id="mobile_utm_medium" name="utm_medium">
+      <input type="hidden" id="mobile_utm_campaign" name="utm_campaign">
+      <input type="hidden" id="mobile_utm_term" name="utm_term">
+      <input type="hidden" id="mobile_utm_content" name="utm_content">
+      <input type="text" id="mobile_company" name="company" style="position:absolute;left:-5000px;opacity:0" tabindex="-1" autocomplete="off">
+
+      <!-- Step Indicator -->
+      <div class="form-steps">
+        <div class="step active" data-step="1">
+          1
+          <span class="step-label">Basic</span>
+        </div>
+        <div class="step" data-step="2">
+          2
+          <span class="step-label">Details</span>
+        </div>
+        <div class="step" data-step="3">
+          3
+          <span class="step-label">Finish</span>
+        </div>
+      </div>
+
+      <!-- Step 1: Basic Info -->
+      <div class="form-step active" data-step="1">
+        <div class="field">
+          <label for="mobile_name">Full name</label>
+          <svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-5 0-9 2.5-9 5v1h18v-1c0-2.5-4-5-9-5Z" fill="currentColor"/></svg>
+          <input id="mobile_name" name="name" type="text" placeholder="Your name" required />
+        </div>
+        
+        <div class="field">
+          <label for="mobile_phone">Phone / WhatsApp</label>
+          <svg viewBox="0 0 24 24"><path d="M20 3H4a1 1 0 0 0-1 1v16l4-4h13a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1Z" fill="currentColor"/></svg>
+          <input id="mobile_phone" name="phone" type="tel" placeholder="98765 43210" pattern="[0-9+\- ]{6,}" inputmode="tel" required maxlength="12" />
+        </div>
+        
+        <div class="field">
+          <label for="mobile_email">Email (optional)</label>
+          <svg viewBox="0 0 24 24"><path d="M20 5H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm0 4-8 5-8-5" fill="currentColor"/></svg>
+          <input id="mobile_email" name="email" type="email" placeholder="name@example.com" />
+        </div>
+        
+        <div class="form-nav">
+          <button type="button" class="btn-next" data-next="2">Next →</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Trip Details -->
+      <div class="form-step" data-step="2">
+        <div class="field" style="grid-column: span 2">
+          <label for="mobile_destSearch">Preferred destination(s)</label>
+          <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5Z" fill="currentColor"/></svg>
+          <input id="mobile_destSearch" type="text" placeholder="Search any city, state or country..." autocomplete="off" />
+          <div id="mobile_destChips" class="chips" style="margin-top:8px"></div>
+          <input type="hidden" id="mobile_destinations" name="destinations" value="[]"/>
+          <div id="mobile_destSuggest" class="suggest"></div>
+        </div>
+
+        <div class="field">
+          <label for="mobile_travelDate">Travel date</label>
+          <svg viewBox="0 0 24 24"><path d="M7 2v2H5a2 2 0 0 0-2 2v2h18V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7Zm14 8H3v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V10Z" fill="currentColor"/></svg>
+          <input id="mobile_travelDate" name="travelDate" type="date" />
+        </div>
+
+        <!-- travellers duo -->
+        <div class="field duo">
+          <label>Travellers</label>
+          <svg viewBox="0 0 24 24"><path d="M16 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm-8 0a3 3 0 1 0-3-3 3 3 0 0 0 3 3Zm8 2c-2.67 0-8 1.34-8 4v1h16v-1c0-2.66-5.33-4-8-4Zm-8 1c-2.21 0-6 1.11-6 3v1h6v-1a4.37 4.37 0 0 1 2.09-3Z" fill="currentColor"/></svg>
+          <div class="duo-box">
+            <div class="duo-seg">
+              <label for="mobile_adults">Adults</label>
+              <div class="counter">
+                <button type="button" data-dec="mobile_adults" aria-label="decrease adults">−</button>
+                <input id="mobile_adults" name="adults" type="number" min="1" max="20" value="2" inputmode="numeric" />
+                <button type="button" data-inc="mobile_adults" aria-label="increase adults">+</button>
+              </div>
+            </div>
+            <span class="sep"></span>
+            <div class="duo-seg">
+              <label for="mobile_kids">Kids</label>
+              <div class="counter">
+                <button type="button" data-dec="mobile_kids" aria-label="decrease kids">−</button>
+                <input id="mobile_kids" name="kids" type="number" min="0" max="20" value="0" inputmode="numeric" />
+                <button type="button" data-inc="mobile_kids" aria-label="increase kids">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-nav">
+          <button type="button" class="btn-prev" data-prev="1">← Back</button>
+          <button type="button" class="btn-next" data-next="3">Next →</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Final Details -->
+      <div class="form-step" data-step="3">
+        <div class="field">
+          <label for="mobile_budget">Budget per person (approx)</label>
+          <svg viewBox="0 0 24 24"><path d="M12 1a11 11 0 1 0 11 11A11.013 11.013 0 0 0 12 1Z" fill="currentColor"/></svg>
+          <input id="mobile_budget" name="budget" type="text" placeholder="₹20,000 – ₹30,000" />
+        </div>
+        
+        <div class="field">
+          <label for="mobile_coupon">Coupon / Referral code (optional)</label>
+          <svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10H5a2 2 0 0 1-2-2V7Z" fill="currentColor"/></svg>
+          <input id="mobile_coupon" name="coupon" type="text" placeholder="e.g. FRIEND500" />
+        </div>
+        
+        <div class="field textarea">
+          <label for="mobile_message">Short message / requirements</label>
+          <svg viewBox="0 0 24 24"><path d="M20 2H4a2 2 0 0 0-2 2v14l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Z" fill="currentColor"/></svg>
+          <textarea id="mobile_message" name="message" placeholder="Hotel star, meal plan, special requests..."></textarea>
+        </div>
+        
+        <div class="consent">
+          <input id="mobile_consent" name="consent" type="checkbox" required />
+          <label for="mobile_consent">I agree to be contacted by Wander Desire about my enquiry.</label>
+        </div>
+        
+        <div class="form-nav">
+          <button type="button" class="btn-prev" data-prev="2">← Back</button>
+          <button type="submit" class="btn-submit">Get quote ✈</button>
+        </div>
+      </div>
+      
+      <div id="mobile_responseMsg" class="msg" aria-live="polite"></div>
+    </form>
+    <div class="footer">
+      Your information is secure with us. We respect your privacy and never share your details with third parties.
+    </div>
+  </section>
+
+  <!-- reviews -->
+  <section class="card reveal" style="margin-top:18px">
+    <div style="padding:14px 18px"><b>20,000+ positive reviews</b> from happy travellers</div>
+    <div class="reviews">
+      <div class="review"><div class="stars">★★★★★</div><div><b>Priya S.</b> — "Bali honeymoon under budget. Super quick responses!"</div></div>
+      <div class="review"><div class="stars">★★★★★</div><div><b>Akash R.</b> — "Kashmir hotels + cab exactly as promised. Smooth trip."</div></div>
+      <div class="review"><div class="stars">★★★★★</div><div><b>Aman T.</b> — "Visa support was fast. Highly recommend Wander Desire."</div></div>
+    </div>
+  </section>
+
+  <!-- faq -->
+  <section class="card faq reveal" style="margin-top:18px">
+    <details><summary>How fast do you share quotes?</summary><div class="ans">Usually within 30–60 minutes (10am–8pm IST).</div></details>
+    <details><summary>Do you handle visas?</summary><div class="ans">Yes, end-to-end support available.</div></details>
+    <details><summary>Payment & cancellations?</summary><div class="ans">UPI/card accepted. Flexible policies per package.</div></details>
+  </section>
+
+  <!-- about us -->
+  <section class="card about reveal" style="margin-top:18px">
+    <div class="about-grid">
+      <div>
+        <div class="title">About Wander Desire</div>
+        <p class="small" style="color:#475569;margin:6px 0 10px">
+          <b>Since 2011</b> • <b>Most trusted website</b> for flights, hotels, visas & custom holidays.
+          We plan end-to-end trips so you can just show up and smile.
+        </p>
+        <span class="pill">Curated Itineraries</span><span class="pill">Best Price Match</span><span class="pill">24×7 Support</span>
+      </div>
+      <div>
+        <div class="title">Connect</div>
+        <div class="socials">
+          <a class="slink" href="https://instagram.com/_wanderdesire_" target="_blank" rel="noopener">📸 Instagram</a>
+          <a class="slink" href="https://facebook.com/" target="_blank" rel="noopener">📘 Facebook</a>
+          <a class="slink" href="https://maps.google.com/?q=Wander+Desire" target="_blank" rel="noopener">📍 Location</a>
+          <a class="slink" href="tel:+919926058885">📞 +91 99260 58885</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- scripts -->
+<script>
+(()=>{
+
+  if(location.protocol==='file:'){ console.warn('Use a local/server host (Live Server/Netlify).'); }
+
+  /* WhatsApp popup */
+  const waFab=document.getElementById('waFab');
+  const waPopup=document.getElementById('waPopup');
+  const waClose=document.getElementById('waClose');
+  const waTopBtn=document.getElementById('waTopBtn');
+  const toggleWA=()=>waPopup.classList.toggle('show');
+  waFab.addEventListener('click',toggleWA);
+  waTopBtn.addEventListener('click',toggleWA);
+  waClose.addEventListener('click',()=>waPopup.classList.remove('show'));
+  document.addEventListener('click',e=>{ if(!waPopup.contains(e.target)&&e.target!==waFab&&e.target!==waTopBtn) waPopup.classList.remove('show'); });
+
+  /* reveal */
+  const obs=new IntersectionObserver((en)=>{en.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  /* ===== HERO VIDEOS — Local assets playlist (unchanged) ===== */
+  (function(){
+    const PLAYLIST = [
+      "assets/videos/bali.mp4",
+      "assets/videos/singapore.mp4",
+      "assets/videos/thailand.mp4",
+      "assets/videos/goa.mp4"
+    ];
+
+    const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const saver=navigator.connection&&(navigator.connection.saveData||navigator.connection.effectiveType==='2g');
+    const allow=!reduce&&!saver;
+
+    const A=document.getElementById('vA'),B=document.getElementById('vB'); if(!A||!B) return;
+    let i=0,cur=A,nxt=B,started=false;
+
+    const set=(v,src)=>{ v.src=src; v.load(); v.muted=true; v.playsInline=true; v.setAttribute('playsinline',''); };
+    const play=v=>v.play().catch(()=>{});
+
+    async function swap(){
+      if(!allow) return;
+      const src=PLAYLIST[i%PLAYLIST.length];
+      set(nxt,src); nxt.currentTime=0; await play(nxt);
+      nxt.classList.add('play'); cur.classList.remove('play'); [cur,nxt]=[nxt,cur]; i++;
+    }
+
+    async function start(){
+      if(started) return; started=true; if(!allow||!PLAYLIST.length) return;
+      set(cur,PLAYLIST[0]); set(nxt,PLAYLIST[1%PLAYLIST.length]||PLAYLIST[0]);
+      await play(cur); cur.classList.add('play');
+      const nextDelay=()=> (isFinite(cur.duration)&&cur.duration>4?cur.duration:12)*1000;
+      const loop=()=>{ swap().then(()=>setTimeout(loop,nextDelay())); };
+      setTimeout(loop,nextDelay());
+    }
+
+    addEventListener('load',start);
+    addEventListener('pointerdown',start,{once:true});
+  })();
+
+  /* UTM capture */
+  (function(){
+    const p=new URLSearchParams(location.search);
+    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(k=>{
+      const el=document.getElementById(k);
+      const mobileEl=document.getElementById('mobile_'+k);
+      if(el){const v=p.get(k); if(v) el.value=v;}
+      if(mobileEl){const v=p.get(k); if(v) mobileEl.value=v;}
+    });
+  })();
+
+  /* ===== DESTINATION SEARCH (unchanged) ===== */
+  (function(){
+    const q=document.getElementById('destSearch'), chips=document.getElementById('destChips'), hidden=document.getElementById('destinations'), sug=document.getElementById('destSuggest');
+    if(q) initDestinations(q, chips, hidden, sug);
+    const mq=document.getElementById('mobile_destSearch'), mchips=document.getElementById('mobile_destChips'), mhidden=document.getElementById('mobile_destinations'), msug=document.getElementById('mobile_destSuggest');
+    if(mq) initDestinations(mq, mchips, mhidden, msug);
+
+    function initDestinations(q, chips, hidden, sug) {
+      const NOMINATIM_URL = 'https://nominatim.openstreetmap.org/search';
+      let picks=[];
+      try{picks=JSON.parse(hidden.value||'[]')}catch{picks=[]}
+
+      function render(){
+        chips.innerHTML='';
+        picks.forEach((p,i)=>{
+          const s=document.createElement('span');
+          s.className='chip';
+          s.innerHTML=`${p.name} <span class="x" data-i="${i}" aria-label="remove">×</span>`;
+          chips.appendChild(s);
+        });
+        hidden.value=JSON.stringify(picks);
+        chips.querySelectorAll('.x').forEach(x=>
+          x.onclick=()=>{
+            picks.splice(+x.dataset.i,1);
+            render();
+          }
+        );
+      }
+      render();
+
+      let active=-1,t;
+      const deb=(fn,ms)=>(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),ms);};
+
+      const setActive=i=>{
+        const it=sug.querySelectorAll('.item');
+        it.forEach(n=>n.classList.remove('active'));
+        if(i>=0&&it[i]) it[i].classList.add('active');
+        active=i;
+      };
+
+      const add=it=>{
+        if(!picks.find(p=>p.name===it.name)){
+          picks.push(it);
+          render();
+        }
+        sug.innerHTML='';
+        q.value='';
+      };
+
+      const list=items=>{
+        if(!items.length){ sug.innerHTML=''; return; }
+        const box=document.createElement('div');
+        box.className='list';
+        items.slice(0,15).forEach((it,idx)=>{
+          const r=document.createElement('div');
+          r.className='item';
+          r.tabIndex=0;
+          r.innerHTML=`<span>${it.name}</span><span class="badge-mini">${it.kind||'place'}</span>`;
+          r.onclick=()=>add(it);
+          r.onmouseenter=()=>setActive(idx);
+          box.appendChild(r);
+        });
+        sug.innerHTML='';
+        sug.appendChild(box);
+        setActive(0);
+      };
+
+      async function searchRealLocations(s){
+        const url = `${NOMINATIM_URL}?q=${encodeURIComponent(s)}&format=json&limit=15&addressdetails=1`;
+        try{
+          const r=await fetch(url);
+          if(!r.ok) throw new Error('API request failed');
+          const data=await r.json();
+
+          const items = data.map(item => {
+            const address = item.address;
+            let name = '';
+            let kind = 'place';
+
+            if (address.city) name = address.city;
+            else if (address.town) name = address.town;
+            else if (address.village) name = address.village;
+            else if (address.municipality) name = address.municipality;
+
+            if (address.state && name) name += `, ${address.state}`;
+            else if (address.state) name = address.state;
+
+            if (address.country && name) name += `, ${address.country}`;
+            else if (address.country) name = address.country;
+
+            if (!name) name = item.display_name.split(',')[0];
+
+            if (item.type === 'city' || item.type === 'town' || item.type === 'village') kind = 'city';
+            else if (item.type === 'state') kind = 'state';
+            else if (item.type === 'country') kind = 'country';
+            else if (item.class === 'tourism') kind = 'attraction';
+            else kind = item.type || 'place';
+
+            return { name, kind };
+          });
+
+          const uniqueItems = items.filter((item, index, self) =>
+            index === self.findIndex(t => t.name === item.name)
+          );
+
+          list(uniqueItems);
+        } catch(error) {
+          console.error('Location search error:', error);
+          localSearch(s);
+        }
+      }
+
+      function localSearch(s){
+        s=s.toLowerCase();
+        const FALLBACK=[
+          {name:'Bali, Indonesia',kind:'island'},{name:'Singapore',kind:'country'},{name:'Phuket, Thailand',kind:'island'},
+          {name:'Bangkok, Thailand',kind:'city'},{name:'Dubai, United Arab Emirates',kind:'city'},{name:'Maldives',kind:'country'},
+          {name:'Goa, India',kind:'state'},{name:'Kashmir, India',kind:'state'},{name:'Assam, India',kind:'state'},
+          {name:'Kerala, India',kind:'state'},{name:'Rajasthan, India',kind:'state'},{name:'Himachal Pradesh, India',kind:'state'},
+          {name:'Uttarakhand, India',kind:'state'},{name:'Tokyo, Japan',kind:'city'},{name:'Seoul, South Korea',kind:'city'},
+          {name:'Hong Kong',kind:'city'},{name:'Macau',kind:'city'},{name:'Sri Lanka',kind:'country'},
+          {name:'Vietnam',kind:'country'},{name:'Cambodia',kind:'country'},{name:'Malaysia',kind:'country'},
+          {name:'London, United Kingdom',kind:'city'},{name:'Paris, France',kind:'city'},{name:'Rome, Italy',kind:'city'},
+          {name:'Barcelona, Spain',kind:'city'},{name:'Amsterdam, Netherlands',kind:'city'},{name:'Switzerland',kind:'country'}
+        ];
+
+        const a=FALLBACK.filter(i=>i.name.toLowerCase().startsWith(s));
+        const b=FALLBACK.filter(i=>!i.name.toLowerCase().startsWith(s) && i.name.toLowerCase().includes(s));
+        list([...a,...b]);
+      }
+
+      q.addEventListener('input',deb(()=>{
+        const v=q.value.trim();
+        if(!v){ sug.innerHTML=''; return; }
+        searchRealLocations(v);
+      },300));
+
+      q.addEventListener('keydown',e=>{
+        const its=sug.querySelectorAll('.item'); if(!its.length) return;
+        if(e.key==='ArrowDown'){ e.preventDefault(); setActive(Math.min(active+1,its.length-1)); }
+        else if(e.key==='ArrowUp'){ e.preventDefault(); setActive(Math.max(active-1,0)); }
+        else if(e.key==='Enter'){ e.preventDefault(); its[active]?.click(); }
+        else if(e.key==='Escape'){ e.preventDefault(); sug.innerHTML=''; }
+      });
+
+      document.addEventListener('click',e=>{
+        if(!sug.contains(e.target)&&e.target!==q) sug.innerHTML='';
+      });
+    }
+  })();
+
+  /* ===== COUNTERS: robust increment/decrement & visible update ===== */
+  (function(){
+    function setupCounter(id) {
+      const input = document.getElementById(id);
+      if (!input) return;
+
+      const incBtn = document.querySelector(`[data-inc="${id}"]`);
+      const decBtn = document.querySelector(`[data-dec="${id}"]`);
+
+      // ensure input shows value (explicit string) and proper attributes for mobile
+      input.setAttribute('inputmode', input.getAttribute('inputmode')||'numeric');
+      input.setAttribute('aria-live','polite');
+      input.value = (input.value !== '') ? String(input.value) : String(Math.max( parseInt(input.min||'0'), 0 ));
+
+      const updateValue = (v) => {
+        input.value = String(v);
+        // ensure change is visible to any listeners
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+      };
+
+      if (incBtn) {
+        incBtn.addEventListener('click', () => {
+          let value = parseInt(input.value) || 0;
+          const max = parseInt(input.max) || 99;
+          if (value < max) {
+            value = value + 1;
+            updateValue(value);
+          }
+        });
+      }
+
+      if (decBtn) {
+        decBtn.addEventListener('click', () => {
+          let value = parseInt(input.value) || 0;
+          const min = parseInt(input.min) || 0;
+          if (value > min) {
+            value = value - 1;
+            updateValue(value);
+          }
+        });
+      }
+
+      // sanitize direct input
+      input.addEventListener('input', () => {
+        let value = parseInt(input.value);
+        if (isNaN(value)) value = parseInt(input.min||'0') || 0;
+        const min = parseInt(input.min) || 0;
+        const max = parseInt(input.max) || 99;
+        if (value < min) value = min;
+        if (value > max) value = max;
+        input.value = String(value);
+      });
+    }
+
+    setupCounter('adults');
+    setupCounter('kids');
+    setupCounter('mobile_adults');
+    setupCounter('mobile_kids');
+  })();
+
+  /* ===== MOBILE FORM STEP NAVIGATION & validation (improved) ===== */
+  (function() {
+    const form = document.getElementById('mobileLeadForm');
+    if (!form) return;
+
+    const steps = document.querySelectorAll('.form-step');
+    const stepIndicators = document.querySelectorAll('.step');
+    let currentStep = 1;
+
+    function showStep(stepNumber) {
+      steps.forEach(step => step.classList.remove('active'));
+      const currentStepEl = document.querySelector(`.form-step[data-step="${stepNumber}"]`);
+      if (currentStepEl) currentStepEl.classList.add('active');
+      stepIndicators.forEach(indicator => {
+        const step = parseInt(indicator.getAttribute('data-step'));
+        indicator.classList.remove('active', 'completed');
+        if (step === stepNumber) indicator.classList.add('active');
+        else if (step < stepNumber) indicator.classList.add('completed');
+      });
+      currentStep = stepNumber;
+    }
+
+    // Next button handlers—with validation before proceed
+    document.querySelectorAll('.btn-next').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const nextStep = parseInt(btn.getAttribute('data-next'));
+        if (validateStep(currentStep)) showStep(nextStep);
+      });
+    });
+
+    // Previous button handlers
+    document.querySelectorAll('.btn-prev').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const prevStep = parseInt(btn.getAttribute('data-prev'));
+        showStep(prevStep);
+      });
+    });
+
+    function onlyDigits(s){ return (s||'').replace(/\D/g,''); }
+
+    // Validate current step before proceeding
+    function validateStep(step) {
+      switch(step) {
+        case 1:
+          const name = document.getElementById('mobile_name').value.trim();
+          const phone = document.getElementById('mobile_phone').value.trim();
+          const mobileEmail = document.getElementById('mobile_email').value.trim();
+
+          if (!name) { alert('Please enter your name'); document.getElementById('mobile_name').focus(); return false; }
+          if (!phone) { alert('Please enter your phone number'); document.getElementById('mobile_phone').focus(); return false; }
+          const digits = onlyDigits(phone);
+          if (digits.length < 10) { alert('Please enter a valid phone number (at least 10 digits)'); document.getElementById('mobile_phone').focus(); return false; }
+          if (digits.length > 12) { alert('Phone number cannot exceed 12 digits'); document.getElementById('mobile_phone').focus(); return false; }
+          if (mobileEmail && !mobileEmail.includes('@')) { alert('Please enter a valid email address containing @'); document.getElementById('mobile_email').focus(); return false; }
+          return true;
+
+        case 2:
+          // no required fields here, but ensure counters are numeric
+          const a = parseInt(document.getElementById('mobile_adults').value||'0')||0;
+          const k = parseInt(document.getElementById('mobile_kids').value||'0')||0;
+          if (a < 1) { alert('Please set at least 1 adult'); document.getElementById('mobile_adults').focus(); return false; }
+          return true;
+
+        default:
+          return true;
+      }
+    }
+
+    // Initialize first step
+    showStep(1);
+  })();
+
+  /* ===== FORM SUBMIT HANDLERS (desktop + mobile) with added validation ===== */
+  const FORM_ENDPOINT='https://formspree.io/f/xvgdpzlo'; /* <-- replace with your Formspree URL */
+
+  function onlyDigits(s){ return (s||'').replace(/\D/g,''); }
+
+  // Desktop form
+  (function(){
+    const form=document.getElementById('leadForm'), submitBtn=document.getElementById('submitBtn'), resp=document.getElementById('responseMsg');
+    if(!form) return;
+    form.addEventListener('submit', async e=>{
+      e.preventDefault(); resp.innerHTML='';
+      if(document.getElementById('company').value){resp.innerHTML='<div class="error">Spam detected.</div>';return;}
+      if(!document.getElementById('consent').checked){resp.innerHTML='<div class="error">Please accept consent.</div>';return;}
+      const name=document.getElementById('name').value.trim();
+      const phone=document.getElementById('phone').value.trim();
+      const email=document.getElementById('email').value.trim();
+
+      if(!name){resp.innerHTML='<div class="error">Please enter your name.</div>';return;}
+      if(!phone){resp.innerHTML='<div class="error">Please enter your phone number.</div>';return;}
+      const phoneDigits = onlyDigits(phone);
+      if(phoneDigits.length < 10){resp.innerHTML='<div class="error">Phone number must have at least 10 digits.</div>';return;}
+      if(phoneDigits.length > 12){resp.innerHTML='<div class="error">Phone number cannot exceed 12 digits.</div>';return;}
+
+      if(email && !email.includes('@')){ resp.innerHTML='<div class="error">Please enter a valid email address containing @.</div>'; return; }
+
+      submitBtn.disabled=true; submitBtn.textContent='Sending...';
+
+      const id='WD-'+Math.random().toString(36).slice(2,7).toUpperCase();
+      const destArr=JSON.parse(document.getElementById('destinations').value||'[]');
+      const payload={
+        leadId:id,name,phone,email,
+        destinations:destArr,destinations_text:destArr.map(d=>d.name).join(', '),
+        travelDate:document.getElementById('travelDate').value,
+        adults:+document.getElementById('adults').value||0,kids:+document.getElementById('kids').value||0,
+        budget:(document.getElementById('budget').value||'').trim(),
+        coupon:(document.getElementById('coupon').value||'').trim(),
+        message:(document.getElementById('message').value||'').trim(),
+        utm_source:document.getElementById('utm_source').value,
+        utm_medium:document.getElementById('utm_medium').value,
+        utm_campaign:document.getElementById('utm_campaign').value,
+        utm_term:document.getElementById('utm_term').value,
+        utm_content:document.getElementById('utm_content').value,
+        timestamp:new Date().toISOString()
+      };
+
+      try{
+        const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)});
+        if(r.ok){
+          resp.innerHTML=`<div class="submitted">Submitted</div>`;
+          form.reset();
+          document.getElementById('destinations').value='[]';
+          document.getElementById('destChips').innerHTML='';
+          fireConfetti();
+        } else {
+          let txt='There was a problem sending your enquiry. Please try again.';
+          try{const j=await r.json(); if(j.error) txt=j.error}catch{}
+          resp.innerHTML=`<div class="error">${txt}</div>`;
+        }
+      }catch{
+        resp.innerHTML='<div class="error">Network error. Try again or WhatsApp us.</div>';
+      }
+      submitBtn.disabled=false; submitBtn.textContent='Get quote ✈';
+    });
+  })();
+
+  // Mobile form
+  (function(){
+    const mobileForm=document.getElementById('mobileLeadForm'), mobileResp=document.getElementById('mobile_responseMsg');
+    if(!mobileForm) return;
+
+    mobileForm.addEventListener('submit', async e=>{
+      e.preventDefault(); mobileResp.innerHTML='';
+      if(document.getElementById('mobile_company').value){mobileResp.innerHTML='<div class="error">Spam detected.</div>';return;}
+      if(!document.getElementById('mobile_consent').checked){mobileResp.innerHTML='<div class="error">Please accept consent.</div>';return;}
+
+      const name=document.getElementById('mobile_name').value.trim();
+      const phone=document.getElementById('mobile_phone').value.trim();
+      const email=document.getElementById('mobile_email').value.trim();
+
+      if(!name){ mobileResp.innerHTML='<div class="error">Please enter your name.</div>'; return; }
+      if(!phone){ mobileResp.innerHTML='<div class="error">Please enter your phone number.</div>'; return; }
+      const phoneDigits = onlyDigits(phone);
+      if(phoneDigits.length < 10){ mobileResp.innerHTML='<div class="error">Phone number must have at least 10 digits.</div>'; return; }
+      if(phoneDigits.length > 12){ mobileResp.innerHTML='<div class="error">Phone number cannot exceed 12 digits.</div>'; return; }
+
+      if(email && !email.includes('@')){ mobileResp.innerHTML='<div class="error">Please enter a valid email address containing @.</div>'; return; }
+
+      const submitBtn = mobileForm.querySelector('.btn-submit');
+      submitBtn.disabled=true; submitBtn.textContent='Sending...';
+
+      const id='WD-'+Math.random().toString(36).slice(2,7).toUpperCase();
+      const destArr=JSON.parse(document.getElementById('mobile_destinations').value||'[]');
+      const payload={
+        leadId:id,name,phone,email,
+        destinations:destArr,destinations_text:destArr.map(d=>d.name).join(', '),
+        travelDate:document.getElementById('mobile_travelDate').value,
+        adults:+document.getElementById('mobile_adults').value||0,kids:+document.getElementById('mobile_kids').value||0,
+        budget:(document.getElementById('mobile_budget').value||'').trim(),
+        coupon:(document.getElementById('mobile_coupon').value||'').trim(),
+        message:(document.getElementById('mobile_message').value||'').trim(),
+        utm_source:document.getElementById('mobile_utm_source').value,
+        utm_medium:document.getElementById('mobile_utm_medium').value,
+        utm_campaign:document.getElementById('mobile_utm_campaign').value,
+        utm_term:document.getElementById('mobile_utm_term').value,
+        utm_content:document.getElementById('mobile_utm_content').value,
+        timestamp:new Date().toISOString()
+      };
+
+      try{
+        const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)});
+        if(r.ok){
+          mobileResp.innerHTML=`<div class="submitted">Submitted</div>`;
+          mobileForm.reset();
+          document.getElementById('mobile_destinations').value='[]';
+          document.getElementById('mobile_destChips').innerHTML='';
+          fireConfetti();
+        } else {
+          let txt='There was a problem sending your enquiry. Please try again.';
+          try{const j=await r.json(); if(j.error) txt=j.error}catch{}
+          mobileResp.innerHTML=`<div class="error">${txt}</div>`;
+        }
+      }catch{
+        mobileResp.innerHTML='<div class="error">Network error. Try again or WhatsApp us.</div>';
+      }
+      submitBtn.disabled=false; submitBtn.textContent='Get quote ✈';
+    });
+  })();
+
+  /* confetti (unchanged) */
+  const cv=document.getElementById('confetti'),cx=cv.getContext('2d');let W=0,H=0,P=[];
+  function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight;} resize(); addEventListener('resize',resize);
+  const COL=['#22d3ee','#a78bfa','#34d399','#f472b6','#fbbf24'];
+  function piece(){return{x:Math.random()*W,y:-10,vy:2+Math.random()*3,vx:-2+Math.random()*4,s:4+Math.random()*6,r:Math.random()*Math.PI,vr:(Math.random()-.5)*0.2,c:COL[(Math.random()*COL.length)|0]}}
+  function step(){cx.clearRect(0,0,W,H);P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillStyle=p.c;cx.fillRect(-p.s/2,-p.s/2,p.s,p.s*1.6);cx.restore()});P=P.filter(p=>p.y<H+20);requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+  function fireConfetti(){for(let i=0;i<140;i++)P.push(piece());setTimeout(()=>{for(let i=0;i<100;i++)P.push(piece())},200)}
+
+})();
+</script>
+</body>
+</html>
