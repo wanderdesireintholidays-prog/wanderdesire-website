@@ -255,13 +255,13 @@ label{display:block;font-size:12px;color:#0f172a;margin:0 0 6px}
 }
 
 .mobile-form .counter button {
-  width: 32px;
-  height: 32px;
+  width: 24px; /* Further reduced from 28px */
+  height: 24px; /* Further reduced from 28px */
 }
 
 .mobile-form .counter input {
-  width: 48px;
-  font-size: 16px;
+  width: 32px; /* Further reduced from 40px */
+  font-size: 14px; /* Slightly smaller */
   font-weight: 600;
   text-align:center;
   background:transparent;
@@ -406,10 +406,10 @@ label{display:block;font-size:12px;color:#0f172a;margin:0 0 6px}
 .mobile-form .duo-box {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px; /* Reduced from 10px */
   border: 1px solid #e5e7eb;
   border-radius: 12px;
-  padding: 8px;
+  padding: 6px; /* Reduced from 8px */
   background: #fff;
   width: 100%;
   box-sizing: border-box;
@@ -418,7 +418,7 @@ label{display:block;font-size:12px;color:#0f172a;margin:0 0 6px}
 .mobile-form .duo-seg {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px; /* Reduced from 8px */
   flex: 1;
   justify-content: space-between;
 }
@@ -426,16 +426,16 @@ label{display:block;font-size:12px;color:#0f172a;margin:0 0 6px}
 .mobile-form .duo-seg label {
   margin: 0;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 11px; /* Reduced from 12px */
   color: #0f172a;
-  min-width: 50px;
+  min-width: 45px; /* Reduced from 50px */
 }
 
 .mobile-form .counter {
   display: inline-flex;
   align-items: center;
   border: 1px solid #e2e8f0;
-  border-radius: 10px;
+  border-radius: 8px; /* Slightly smaller */
   overflow: hidden;
   background: #fff;
 }
@@ -444,8 +444,8 @@ label{display:block;font-size:12px;color:#0f172a;margin:0 0 6px}
   all: unset;
   display: grid;
   place-items: center;
-  width: 32px;
-  height: 32px;
+  width: 24px; /* Further reduced from 28px */
+  height: 24px; /* Further reduced from 28px */
   cursor: pointer;
   background: #f8fafc;
   transition: background 0.2s;
@@ -456,12 +456,12 @@ label{display:block;font-size:12px;color:#0f172a;margin:0 0 6px}
 }
 
 .mobile-form .counter input {
-  width: 48px;
+  width: 32px; /* Further reduced from 40px */
   text-align: center;
   border: 0;
   padding: 0;
   outline: 0;
-  font-size: 16px;
+  font-size: 14px; /* Slightly smaller */
   font-weight: 600;
   background: transparent;
   color: var(--ink);
@@ -469,9 +469,41 @@ label{display:block;font-size:12px;color:#0f172a;margin:0 0 6px}
 
 .mobile-form .sep {
   width: 1px;
-  height: 20px;
+  height: 18px; /* Slightly smaller */
   background: #e5e7eb;
-  margin: 0 6px;
+  margin: 0 4px; /* Reduced from 6px */
+}
+
+/* Additional fixes for very small screens */
+@media (max-width: 380px) {
+  .mobile-form .duo-box {
+    gap: 6px;
+    padding: 5px; /* Further reduced */
+  }
+  
+  .mobile-form .duo-seg {
+    gap: 4px; /* Further reduced */
+  }
+  
+  .mobile-form .counter button {
+    width: 22px; /* Further reduced */
+    height: 22px; /* Further reduced */
+  }
+  
+  .mobile-form .counter input {
+    width: 28px; /* Further reduced */
+    font-size: 13px; /* Further reduced */
+  }
+  
+  .mobile-form .duo-seg label {
+    font-size: 10px; /* Further reduced */
+    min-width: 40px; /* Further reduced */
+  }
+  
+  .mobile-form .sep {
+    height: 16px; /* Further reduced */
+    margin: 0 3px; /* Further reduced */
+  }
 }
 
 /* Hide packages section */
