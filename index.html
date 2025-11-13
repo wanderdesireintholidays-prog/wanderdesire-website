@@ -13,7 +13,6 @@
 html,body{height:100%;width:100%;overflow-x:hidden}
 body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;color:var(--ink);background:#0b1220}
 
-/* background visuals */
 .bg-anim{position:fixed;inset:0;z-index:-2}
 .bg-anim:before{content:"";position:absolute;inset:-20%;
   background:
@@ -27,10 +26,8 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
 .grid-overlay{position:fixed;inset:0;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:40px 40px;opacity:.35;z-index:-1}
 .top-shade{position:fixed;inset:0 0 auto 0;height:120px;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(8,12,20,.85),rgba(8,12,20,0))}
 
-/* layout */
 .container{max-width:1060px;margin:auto;padding:24px 32px}
 
-/* header - Fixed for mobile */
 .header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:8px 0 18px;position:relative;z-index:2}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex:0 0 auto}
 .brand-badge{display:inline-flex;align-items:center;gap:10px;background:#fff;padding:6px 10px;border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,.12)}
@@ -43,10 +40,8 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
 .btn.primary{background:var(--accent);color:#fff;box-shadow:0 10px 24px rgba(14,165,164,.35)}
 .btn.primary:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(14,165,164,.45)}
 
-/* card */
 .card{background:var(--card);backdrop-filter: blur(10px);border:1px solid #ffffff33;border-radius:20px;box-shadow:0 20px 60px rgba(2,6,23,.35);overflow:hidden}
 
-/* hero */
 .hero{position:relative;display:grid;grid-template-columns:1fr;gap:0;padding:28px;min-height:460px}
 @media(min-width:900px){.hero{min-height:520px}}
 .hero-copy{position:relative;z-index:3;max-width:640px}
@@ -56,14 +51,12 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
 .v-gradient{position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,6,23,.35),rgba(2,6,23,.65));z-index:1}
 .hero-fallback{position:absolute;inset:0;background:#0b1220 url('assets/hero-fallback.jpg') center/cover no-repeat;z-index:0}
 
-/* badges/trust */
 .badges{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 18px}
 .badge,.t{font-size:12px;border-radius:8px;padding:6px 10px}
 .badge{color:#064e3b;background:#ecfdf5;border:1px solid #a7f3d0}
 .trust{display:flex;gap:12px;flex-wrap:wrap;margin:8px 0}
 .t{color:#0f766e;background:#d1fae5;border:1px solid #a7f3d0}
 
-/* ====== MIRROR BACKGROUND EFFECT FOR ENQUIRY FORM ONLY ====== */
 #lead.desktop-form,
 #lead.mobile-form {
   position: relative;
@@ -97,7 +90,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   background: transparent;
 }
 
-/* Mirror form field styling */
 #lead.desktop-form form,
 #lead.mobile-form form {
   padding:18px;
@@ -112,7 +104,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   gap:14px
 }
 
-/* ====== IMPROVED TEXT COLORS FOR MIRROR FORM ====== */
 #lead.desktop-form label,
 #lead.mobile-form label,
 #lead.desktop-form .consent label,
@@ -203,7 +194,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   font-size: 14px;
 }
 
-/* Mirror form travellers duo */
 #lead.desktop-form .field.duo,
 #lead.mobile-form .field.duo {
   padding-left:40px
@@ -291,7 +281,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   margin:0 6px
 }
 
-/* Mirror form destination chips */
 #lead.desktop-form .chips,
 #lead.mobile-form .chips {
   display:flex;
@@ -370,7 +359,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   border-radius:999px
 }
 
-/* Mirror form actions */
 #lead.desktop-form .actions,
 #lead.mobile-form .actions {
   display:flex;
@@ -432,9 +420,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   border-top:1px solid rgba(255,255,255,0.2)
 }
 
-/* ====== IMPROVED SECTION STYLES ====== */
-
-/* Reviews Section - Elegant Glassmorphism */
 .reviews-section {
   background: rgba(255,255,255,0.08);
   backdrop-filter: blur(20px);
@@ -451,7 +436,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   color: #ffffff;
 }
 
-/* FIX: Improved color for "from happy travellers" text */
 .reviews-section > div:first-child {
   color: #e2e8f0;
 }
@@ -491,14 +475,12 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   color:#e2e8f0
 }
 
-/* FAQ Section - Elegant Glassmorphism */
 .faq-section {
   background: rgba(255,255,255,0.08);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255,255,255,0.15);
 }
 
-/* FIX: Improved color for "Frequently Asked Questions" text */
 .faq-section > div:first-child b {
   color: #ffffff;
 }
@@ -538,7 +520,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   color:#e2e8f0
 }
 
-/* About Section - Elegant Glassmorphism */
 .about-section {
   background: rgba(255,255,255,0.08);
   backdrop-filter: blur(20px);
@@ -607,7 +588,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   transform: translateY(-2px);
 }
 
-/* reveal */
 .reveal {
   opacity:0;
   transform:translateY(10px);
@@ -619,7 +599,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   transform:none
 }
 
-/* WhatsApp FAB */
 .wa-fab {
   position:fixed;
   right:16px;
@@ -711,7 +690,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   color:#e2e8f0
 }
 
-/* ---------- Mobile polish ---------- */
 .container {
   padding:18px 14px
 }
@@ -742,7 +720,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   background:linear-gradient(180deg,rgba(8,12,20,.65),rgba(8,12,20,.25))
 }
 
-/* ====== KEY FIX: keep logo + 3 buttons on ONE LINE on small screens ====== */
 @media(max-width:600px){
   .container {
     padding:14px 10px
@@ -785,7 +762,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   }
 }
 
-/* ultra-small phones */
 @media(max-width:380px){
   .brand-img {
     height:26px
@@ -800,7 +776,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   }
 }
 
-/* hero tweaks on tiny screens */
 @media(max-width:600px){
   .hero {
     min-height:320px;
@@ -888,29 +863,24 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   font-size:16px
 }
 
-/* ====== MOBILE-SPECIFIC FORM STYLES ====== */
-/* Hide desktop form on mobile */
 @media (max-width: 720px) {
   #lead.desktop-form {
     display: none;
   }
 }
 
-/* Show mobile form only on mobile */
 @media (max-width: 720px) {
   #lead.mobile-form {
     display: block;
   }
 }
 
-/* Hide mobile form on desktop */
 @media (min-width: 721px) {
   #lead.mobile-form {
     display: none;
   }
 }
 
-/* Mobile form specific adjustments */
 .mobile-form .field input,
 .mobile-form .field textarea {
   font-size: 16px;
@@ -921,19 +891,108 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   left: 14px;
 }
 
-/* FIX: Ultra small counter buttons for mobile */
+/* ====== VERTICAL MOBILE COUNTER LAYOUT ====== */
+.mobile-form .field.duo {
+  padding-left: 40px;
+  display: block;
+  visibility: visible;
+}
+
+.mobile-form .duo-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 12px;
+  padding: 12px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.mobile-form .duo-seg {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+}
+
+.mobile-form .duo-seg label {
+  margin: 0;
+  font-weight: 700;
+  font-size: 14px;
+  color: #f1f5f9;
+  min-width: 60px;
+  flex-shrink: 0;
+}
+
+.mobile-form .counter {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+}
+
 .mobile-form .counter button {
-  width: 10px;
-  height: 10px;
+  all: unset;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  background: rgba(255,255,255,0.2);
+  transition: background 0.2s;
+  color: #cbd5e1;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.mobile-form .counter button:hover {
+  background: rgba(255,255,255,0.3);
 }
 
 .mobile-form .counter input {
-  width: 12px;
-  font-size: 8px;
+  width: 40px;
+  text-align: center;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  font-size: 16px;
   font-weight: 600;
-  text-align:center;
-  background:transparent;
-  color:#ffffff;
+  background: transparent;
+  color: #ffffff;
+}
+
+@media (max-width: 380px) {
+  .mobile-form .duo-box {
+    gap: 6px;
+    padding: 10px;
+  }
+  
+  .mobile-form .duo-seg {
+    gap: 8px;
+  }
+  
+  .mobile-form .counter button {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+  
+  .mobile-form .counter input {
+    width: 36px;
+    font-size: 14px;
+  }
+  
+  .mobile-form .duo-seg label {
+    font-size: 13px;
+    min-width: 55px;
+  }
 }
 
 .mobile-form .chips {
@@ -959,7 +1018,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   padding: 12px 14px;
 }
 
-/* Mobile form step indicator */
 .form-steps {
   display: flex;
   justify-content: space-between;
@@ -1019,7 +1077,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   font-weight: 700;
 }
 
-/* Mobile form step containers */
 .form-step {
   display: none;
 }
@@ -1028,7 +1085,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   display: block;
 }
 
-/* Mobile form navigation buttons */
 .form-nav {
   display: flex;
   justify-content: space-between;
@@ -1064,132 +1120,14 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   cursor: not-allowed;
 }
 
-/* ====== FIX FOR MOBILE ADULTS & KIDS COUNTER ====== */
-.mobile-form .field.duo {
-  padding-left: 40px;
-  display: block;
-  visibility: visible;
-}
-
-.mobile-form .duo-box {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  border: 1px solid rgba(255,255,255,0.3);
-  border-radius: 8px;
-  padding: 1px 2px;
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(10px);
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.mobile-form .duo-seg {
-  display: flex;
-  align-items: center;
-  gap: 1px;
-  flex: 1;
-  justify-content: space-between;
-}
-
-.mobile-form .duo-seg label {
-  margin: 0;
-  font-weight: 700;
-  font-size: 6px;
-  color: #f1f5f9;
-  min-width: 25px;
-}
-
-.mobile-form .counter {
-  display: inline-flex;
-  align-items: center;
-  border: 1px solid rgba(255,255,255,0.3);
-  border-radius: 3px;
-  overflow: hidden;
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(10px);
-}
-
-.mobile-form .counter button {
-  all: unset;
-  display: grid;
-  place-items: center;
-  width: 10px;
-  height: 10px;
-  cursor: pointer;
-  background: rgba(255,255,255,0.2);
-  transition: background 0.2s;
-  color: #cbd5e1;
-  font-size: 6px;
-}
-
-.mobile-form .counter button:hover {
-  background: rgba(255,255,255,0.3);
-}
-
-.mobile-form .counter input {
-  width: 12px;
-  text-align: center;
-  border: 0;
-  padding: 0;
-  outline: 0;
-  font-size: 8px;
-  font-weight: 600;
-  background: transparent;
-  color: #ffffff;
-}
-
-.mobile-form .sep {
-  width: 1px;
-  height: 6px;
-  background: rgba(255,255,255,0.3);
-  margin: 0 1px;
-}
-
-/* Additional fixes for very small screens */
-@media (max-width: 380px) {
-  .mobile-form .duo-box {
-    gap: 1px;
-    padding: 0px 1px;
-  }
-  
-  .mobile-form .duo-seg {
-    gap: 0px;
-  }
-  
-  .mobile-form .counter button {
-    width: 8px;
-    height: 8px;
-    font-size: 5px;
-  }
-  
-  .mobile-form .counter input {
-    width: 10px;
-    font-size: 7px;
-  }
-  
-  .mobile-form .duo-seg label {
-    font-size: 5px;
-    min-width: 20px;
-  }
-  
-  .mobile-form .sep {
-    height: 4px;
-    margin: 0 0px;
-  }
-}
-
-/* Hide packages section */
 #packages {
   display: none;
 }
 
-/* Remove packages from navigation */
 .nav a[href="#packages"] {
   display: none;
 }
 
-/* Submitted message styling */
 .submitted {
   background: rgba(236,253,245,0.2);
   color: #a7f3d0;
@@ -1201,7 +1139,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   border: 1px solid rgba(167,243,208,0.5);
 }
 
-/* ====== SUCCESS POPUP STYLES ====== */
 .success-popup {
   position: fixed;
   top: 0;
@@ -1306,7 +1243,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   }
 }
 
-/* Media queries for other sections */
 @media(max-width:900px){
   .reviews {
     grid-template-columns:1fr
@@ -1328,7 +1264,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
 <div class="grid-overlay"></div>
 <div class="top-shade"></div>
 
-<!-- WhatsApp FAB with two numbers -->
 <div class="wa-fab" id="waFab" title="Chat on WhatsApp">💬</div>
 <div class="wa-popup" id="waPopup" aria-hidden="true">
   <div class="wa-header">Chat on WhatsApp</div>
@@ -1337,7 +1272,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   <button id="waClose" aria-label="Close">×</button>
 </div>
 
-<!-- Success Popup -->
 <div class="success-popup" id="successPopup">
   <div class="success-content">
     <div class="success-icon">
@@ -1352,7 +1286,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
 </div>
 
 <div class="container">
-  <!-- header -->
   <header class="header reveal">
     <a href="/" class="brand" aria-label="Wander Desire">
       <span class="brand-badge">
@@ -1365,7 +1298,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
     </nav>
   </header>
 
-  <!-- hero -->
   <section class="card hero reveal">
     <div class="video-layer" aria-hidden="true">
       <div class="hero-fallback" aria-hidden="true"></div>
@@ -1385,7 +1317,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
     </div>
   </section>
 
-  <!-- DESKTOP enquiry form (hidden on mobile) -->
   <section id="lead" class="card desktop-form reveal" style="margin-top:18px">
     <form id="leadForm" autocomplete="on">
       <input type="hidden" id="utm_source" name="utm_source">
@@ -1412,7 +1343,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
           <input id="email" name="email" type="email" placeholder="name@example.com" />
         </div>
 
-        <!-- destinations -->
         <div class="field" style="grid-column: span 2">
           <label for="destSearch">Preferred destination(s)</label>
           <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5Z" fill="currentColor"/></svg>
@@ -1428,7 +1358,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
           <input id="travelDate" name="travelDate" type="date" />
         </div>
 
-        <!-- travellers duo -->
         <div class="field duo">
           <label>Travellers</label>
           <svg viewBox="0 0 24 24"><path d="M16 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm-8 0a3 3 0 1 0-3-3 3 3 0 0 0 3 3Zm8 2c-2.67 0-8 1.34-8 4v1h16v-1c0-2.66-5.33-4-8-4Zm-8 1c-2.21 0-6 1.11-6 3v1h6v-1a4.37 4.37 0 0 1 2.09-3Z" fill="currentColor"/></svg>
@@ -1486,7 +1415,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
     </div>
   </section>
 
-  <!-- MOBILE enquiry form (hidden on desktop) -->
   <section id="lead" class="card mobile-form reveal" style="margin-top:18px">
     <form id="mobileLeadForm" autocomplete="on">
       <input type="hidden" id="mobile_utm_source" name="utm_source">
@@ -1496,7 +1424,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
       <input type="hidden" id="mobile_utm_content" name="utm_content">
       <input type="text" id="mobile_company" name="company" style="position:absolute;left:-5000px;opacity:0" tabindex="-1" autocomplete="off">
 
-      <!-- Step Indicator -->
       <div class="form-steps">
         <div class="step active" data-step="1">
           1
@@ -1512,7 +1439,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
         </div>
       </div>
 
-      <!-- Step 1: Basic Info -->
       <div class="form-step active" data-step="1">
         <div class="field">
           <label for="mobile_name">Full name</label>
@@ -1537,7 +1463,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
         </div>
       </div>
 
-      <!-- Step 2: Trip Details -->
       <div class="form-step" data-step="2">
         <div class="field" style="grid-column: span 2">
           <label for="mobile_destSearch">Preferred destination(s)</label>
@@ -1554,7 +1479,7 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
           <input id="mobile_travelDate" name="travelDate" type="date" />
         </div>
 
-        <!-- travellers duo -->
+        <!-- VERTICAL TRAVELLERS LAYOUT -->
         <div class="field duo">
           <label>Travellers</label>
           <svg viewBox="0 0 24 24"><path d="M16 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm-8 0a3 3 0 1 0-3-3 3 3 0 0 0 3 3Zm8 2c-2.67 0-8 1.34-8 4v1h16v-1c0-2.66-5.33-4-8-4Zm-8 1c-2.21 0-6 1.11-6 3v1h6v-1a4.37 4.37 0 0 1 2.09-3Z" fill="currentColor"/></svg>
@@ -1567,7 +1492,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
                 <button type="button" data-inc="mobile_adults" aria-label="increase adults">+</button>
               </div>
             </div>
-            <span class="sep"></span>
             <div class="duo-seg">
               <label for="mobile_kids">Kids</label>
               <div class="counter">
@@ -1585,7 +1509,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
         </div>
       </div>
 
-      <!-- Step 3: Final Details -->
       <div class="form-step" data-step="3">
         <div class="field">
           <label for="mobile_budget">Budget per person (approx)</label>
@@ -1623,7 +1546,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
     </div>
   </section>
 
-  <!-- reviews - Elegant Glassmorphism -->
   <section class="card reviews-section reveal" style="margin-top:18px">
     <div style="padding:14px 18px"><b>20,000+ positive reviews</b> from happy travellers</div>
     <div class="reviews">
@@ -1633,7 +1555,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
     </div>
   </section>
 
-  <!-- faq - Elegant Glassmorphism -->
   <section class="card faq-section reveal" style="margin-top:18px">
     <div style="padding:14px 18px"><b>Frequently Asked Questions</b></div>
     <div class="faq">
@@ -1644,7 +1565,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
     </div>
   </section>
 
-  <!-- about us - Elegant Glassmorphism -->
   <section class="card about-section reveal" style="margin-top:18px">
     <div class="about">
       <div class="about-grid">
@@ -1671,13 +1591,11 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   </section>
 </div>
 
-<!-- scripts -->
 <script>
 (()=>{
 
   if(location.protocol==='file:'){ console.warn('Use a local/server host (Live Server/Netlify).'); }
 
-  /* WhatsApp popup */
   const waFab=document.getElementById('waFab');
   const waPopup=document.getElementById('waPopup');
   const waClose=document.getElementById('waClose');
@@ -1688,7 +1606,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   waClose.addEventListener('click',()=>waPopup.classList.remove('show'));
   document.addEventListener('click',e=>{ if(!waPopup.contains(e.target)&&e.target!==waFab&&e.target!==waTopBtn) waPopup.classList.remove('show'); });
 
-  /* Success Popup */
   const successPopup = document.getElementById('successPopup');
   const successClose = document.getElementById('successClose');
   
@@ -1702,18 +1619,15 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   
   successClose.addEventListener('click', hideSuccessPopup);
   
-  // Close popup when clicking outside
   successPopup.addEventListener('click', (e) => {
     if (e.target === successPopup) {
       hideSuccessPopup();
     }
   });
 
-  /* reveal */
   const obs=new IntersectionObserver((en)=>{en.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});},{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-  /* ===== HERO VIDEOS — Local assets playlist (unchanged) ===== */
   (function(){
     const PLAYLIST = [
       "assets/videos/bali.mp4",
@@ -1752,7 +1666,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
     addEventListener('pointerdown',start,{once:true});
   })();
 
-  /* UTM capture */
   (function(){
     const p=new URLSearchParams(location.search);
     ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(k=>{
@@ -1763,7 +1676,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
     });
   })();
 
-  /* ===== DESTINATION SEARCH (unchanged) ===== */
   (function(){
     const q=document.getElementById('destSearch'), chips=document.getElementById('destChips'), hidden=document.getElementById('destinations'), sug=document.getElementById('destSuggest');
     if(q) initDestinations(q, chips, hidden, sug);
@@ -1914,7 +1826,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
     }
   })();
 
-  /* ===== COUNTERS: robust increment/decrement & visible update ===== */
   (function(){
     function setupCounter(id) {
       const input = document.getElementById(id);
@@ -1923,14 +1834,12 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
       const incBtn = document.querySelector(`[data-inc="${id}"]`);
       const decBtn = document.querySelector(`[data-dec="${id}"]`);
 
-      // ensure input shows value (explicit string) and proper attributes for mobile
       input.setAttribute('inputmode', input.getAttribute('inputmode')||'numeric');
       input.setAttribute('aria-live','polite');
       input.value = (input.value !== '') ? String(input.value) : String(Math.max( parseInt(input.min||'0'), 0 ));
 
       const updateValue = (v) => {
         input.value = String(v);
-        // ensure change is visible to any listeners
         input.dispatchEvent(new Event('input', { bubbles: true }));
       };
 
@@ -1956,7 +1865,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
         });
       }
 
-      // sanitize direct input
       input.addEventListener('input', () => {
         let value = parseInt(input.value);
         if (isNaN(value)) value = parseInt(input.min||'0') || 0;
@@ -1974,7 +1882,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
     setupCounter('mobile_kids');
   })();
 
-  /* ===== MOBILE FORM STEP NAVIGATION & validation (improved) ===== */
   (function() {
     const form = document.getElementById('mobileLeadForm');
     if (!form) return;
@@ -1996,7 +1903,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
       currentStep = stepNumber;
     }
 
-    // Next button handlers—with validation before proceed
     document.querySelectorAll('.btn-next').forEach(btn => {
       btn.addEventListener('click', () => {
         const nextStep = parseInt(btn.getAttribute('data-next'));
@@ -2004,7 +1910,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
       });
     });
 
-    // Previous button handlers
     document.querySelectorAll('.btn-prev').forEach(btn => {
       btn.addEventListener('click', () => {
         const prevStep = parseInt(btn.getAttribute('data-prev'));
@@ -2014,7 +1919,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
 
     function onlyDigits(s){ return (s||'').replace(/\D/g,''); }
 
-    // Validate current step before proceeding
     function validateStep(step) {
       switch(step) {
         case 1:
@@ -2031,7 +1935,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
           return true;
 
         case 2:
-          // no required fields here, but ensure counters are numeric
           const a = parseInt(document.getElementById('mobile_adults').value||'0')||0;
           const k = parseInt(document.getElementById('mobile_kids').value||'0')||0;
           if (a < 1) { alert('Please set at least 1 adult'); document.getElementById('mobile_adults').focus(); return false; }
@@ -2042,16 +1945,13 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
       }
     }
 
-    // Initialize first step
     showStep(1);
   })();
 
-  /* ===== FORM SUBMIT HANDLERS (desktop + mobile) with added validation ===== */
-  const FORM_ENDPOINT='https://formspree.io/f/xldaener'; /* <-- replace with your Formspree URL */
+  const FORM_ENDPOINT='https://formspree.io/f/xvgdpzlo';
 
   function onlyDigits(s){ return (s||'').replace(/\D/g,''); }
 
-  // Desktop form
   (function(){
     const form=document.getElementById('leadForm'), submitBtn=document.getElementById('submitBtn'), resp=document.getElementById('responseMsg');
     if(!form) return;
@@ -2110,7 +2010,6 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
     });
   })();
 
-  // Mobile form
   (function(){
     const mobileForm=document.getElementById('mobileLeadForm'), mobileResp=document.getElementById('mobile_responseMsg');
     if(!mobileForm) return;
