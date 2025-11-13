@@ -1366,7 +1366,7 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
               <label for="adults">Adults</label>
               <div class="counter">
                 <button type="button" data-dec="adults" aria-label="decrease adults">−</button>
-                <input id="adults" name="adults" type="number" min="1" max="20" value="2" inputmode="numeric">
+                <input id="adults" name="adults" type="number" min="1" max="1000" value="2" inputmode="numeric">
                 <button type="button" data-inc="adults" aria-label="increase adults">+</button>
               </div>
             </div>
@@ -1375,7 +1375,7 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
               <label for="kids">Kids</label>
               <div class="counter">
                 <button type="button" data-dec="kids" aria-label="decrease kids">−</button>
-                <input id="kids" name="kids" type="number" min="0" max="20" value="0" inputmode="numeric">
+                <input id="kids" name="kids" type="number" min="0" max="1000" value="0" inputmode="numeric">
                 <button type="button" data-inc="kids" aria-label="increase kids">+</button>
               </div>
             </div>
@@ -1488,7 +1488,7 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
               <label for="mobile_adults">Adults</label>
               <div class="counter">
                 <button type="button" data-dec="mobile_adults" aria-label="decrease adults">−</button>
-                <input id="mobile_adults" name="adults" type="number" min="1" max="20" value="2" inputmode="numeric" />
+                <input id="mobile_adults" name="adults" type="number" min="1" max="1000" value="2" inputmode="numeric" />
                 <button type="button" data-inc="mobile_adults" aria-label="increase adults">+</button>
               </div>
             </div>
@@ -1496,7 +1496,7 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
               <label for="mobile_kids">Kids</label>
               <div class="counter">
                 <button type="button" data-dec="mobile_kids" aria-label="decrease kids">−</button>
-                <input id="mobile_kids" name="kids" type="number" min="0" max="20" value="0" inputmode="numeric" />
+                <input id="mobile_kids" name="kids" type="number" min="0" max="1000" value="0" inputmode="numeric" />
                 <button type="button" data-inc="mobile_kids" aria-label="increase kids">+</button>
               </div>
             </div>
@@ -1948,7 +1948,7 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
     showStep(1);
   })();
 
-  const FORM_ENDPOINT='https://formspree.io/f/xvgdpzlo';
+  const FORM_ENDPOINT='https://formspree.io/f/xldaener';
 
   function onlyDigits(s){ return (s||'').replace(/\D/g,''); }
 
