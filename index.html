@@ -57,6 +57,26 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
 .trust{display:flex;gap:12px;flex-wrap:wrap;margin:8px 0}
 .t{color:#0f766e;background:#d1fae5;border:1px solid #a7f3d0}
 
+.form-header {
+  padding: 20px 24px 0;
+  text-align: center;
+}
+
+.form-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+
+.form-subtitle {
+  font-size: 16px;
+  color: #cbd5e1;
+  margin: 0;
+  line-height: 1.4;
+}
+
 #lead.desktop-form,
 #lead.mobile-form {
   position: relative;
@@ -1318,6 +1338,10 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   </section>
 
   <section id="lead" class="card desktop-form reveal" style="margin-top:18px">
+    <div class="form-header">
+      <h2 class="form-title">Let's Plan Your Next Adventure </h2>
+      <p class="form-subtitle">Share your travel dreams and we'll craft the perfect itinerary for you</p>
+    </div>
     <form id="leadForm" autocomplete="on">
       <input type="hidden" id="utm_source" name="utm_source">
       <input type="hidden" id="utm_medium" name="utm_medium">
@@ -1416,6 +1440,10 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;co
   </section>
 
   <section id="lead" class="card mobile-form reveal" style="margin-top:18px">
+    <div class="form-header">
+      <h2 class="form-title">Let's Plan Your Next Adventure </h2>
+      <p class="form-subtitle">Share your travel dreams and we'll craft the perfect itinerary for you</p>
+    </div>
     <form id="mobileLeadForm" autocomplete="on">
       <input type="hidden" id="mobile_utm_source" name="utm_source">
       <input type="hidden" id="mobile_utm_medium" name="utm_medium">
